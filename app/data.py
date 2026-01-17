@@ -518,7 +518,7 @@ roles = {
     "Technical Architect": {
         "level": 6,
         "experience_years": [6, 100],
-        "skillset": ["System Design", "Clean Architecture", "Microservices", "Distributed Systems", "Architecture Patterns"]
+        "skillset": ["Clean Architecture", "Microservices", "Distributed Systems", "Architecture Patterns", "System Design"]
     }
 }
 
