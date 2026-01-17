@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skills Gap Analysis Engine | NUCLi OS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .bg-gradient-custom {
+      background: linear-gradient(143deg, rgba(21,93,252,0.2) 8%, rgba(152,16,250,0.1) 50%, rgba(0,0,0,0) 92%);
+    }
+  </style>
+</head>
+
+<body class="bg-black text-white min-h-screen flex flex-col">
+
+<a href="/" class="p-6 flex items-center gap-2">
+  <div class="bg-white text-black font-bold px-2 py-1 rounded text-xs">OS</div>
+  <div class="text-xl font-semibold">NUCLi</div>
+</a>
+
+<main class="flex-grow bg-gradient-custom pb-20">
+  <div class="max-w-4xl mx-auto px-4 pt-16 text-center">
+    <h1 class="text-5xl md:text-7xl font-bold mb-4">
+      Skills Gap <br/> Analysis Engine
+    </h1>
+    <div class="w-32 h-1 bg-[#fb2c36] mx-auto rounded-full mb-12"></div>
+
+    <div class="bg-white rounded-xl p-8 text-left shadow-2xl max-w-3xl mx-auto">
+      <form method="POST" action="/applications" class="space-y-8">
+
+        <!-- Candidate Information -->
+        <section class="space-y-6">
+          <h2 class="text-2xl font-bold text-[#101727]">Candidate Information</h2>
+
+          {% if errorMessage %}
+            <p class="text-sm text-red-600 mt-2">
+              {{ errorMessage }}
+            </p>
+          {% endif %}
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <!-- Current Role -->
+            <div>
+              <label class="text-sm font-medium text-slate-600">Current Role *</label>
+              <select name="currentRole" required
+                class="w-full p-3 rounded-lg border border-slate-300 text-black bg-white">
+                <option disabled selected value="">Select current role</option>
+                <option>Frontend Developer</option>
+                <option>Backend Developer</option>
+                <option>Full Stack Developer</option>
+                <option>DevOps Engineer</option>
+                <option>Software Engineer</option>
+                <option>Senior Backend Developer</option>
+                <option>Senior Frontend Developer</option>
+                <option>Senior Full Stack Developer</option>
+                <option>Cloud Engineer</option>
+                <option>Platform Engineer</option>
+                <option>Site Reliability Engineer</option>
+                <option>API Engineer</option>
+                <option>Data Engineer</option>
+                <option>System Engineer</option>
+                <option>Technical Architect</option>
+              </select>
+            </div>
+
+            <!-- Skills -->
+            <div>
+              <label class="text-sm font-medium text-slate-600">Current Skills *</label>
+              <div class="h-56 overflow-y-scroll border border-slate-300 rounded-lg p-3 space-y-2 text-black">
+
+                {% set skill_list = [
+                  "API Security","AWS","Agile Methodology","Architecture Patterns","Authentication",
+                  "Authorization","Bash","Browser Internals","CI/CD","CSS","Caching",
+                  "Clean Architecture","Code Optimization","Computer Networks","Concurrency",
+                  "Data Structures","Design Patterns","Distributed Systems","Docker",
+                  "Error Handling","Express.js","FastAPI","Git","Graph Algorithms","GraphQL",
+                  "HTML","HTTP Protocol","JavaScript","Kubernetes","Linux Basics","Load Balancing",
+                  "Logging","Message Queues","Microservices","MongoDB","Networking Basics",
+                  "Nginx","Node.js","OAuth","Object-Oriented Design","Performance Testing",
+                  "PostgreSQL","Problem Solving","Python","Queue Data Structures","Rate Limiting",
+                  "React","Redis","REST APIs","Scalability Concepts","Search Algorithms",
+                  "Software Testing","Sorting Algorithms","State Management","System Design",
+                  "Technical Documentation","Testing Automation","TypeScript",
+                  "Versioning Strategies","Web Performance Optimization","Web Security",
+                  "WebSockets","Workflow Orchestration"
+                ] %}
+
+                {% for skill in skill_list %}
+                  <label class="block">
+                    <input type="checkbox" name="skills_selected" value="{{ skill }}">
+                    {{ skill }}
+                  </label>
+                {% endfor %}
+              </div>
+            </div>
+
+            <!-- Experience -->
+            <div>
+              <label class="text-sm font-medium text-slate-600">Years of Experience *</label>
+              <input name="experience" type="number" step="0.1" required
+                class="w-full p-3 rounded-lg border border-slate-300 text-black">
+            </div>
+
+            <!-- Education -->
+            <div>
+              <label class="text-sm font-medium text-slate-600">Education *</label>
+              <input name="education" type="text" required
+                class="w-full p-3 rounded-lg border border-slate-300 text-black">
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Target Role -->
+        <section class="space-y-4 pt-6 border-t">
+          <h2 class="text-2xl font-bold text-[#101727]">Target Role</h2>
+          <select name="targetRole" required
+            class="w-full p-3 rounded-lg border border-slate-300 text-black bg-white">
+            <option disabled selected value="">Select target role</option>
+            <option>Frontend Developer</option>
+            <option>Backend Developer</option>
+            <option>Full Stack Developer</option>
+            <option>DevOps Engineer</option>
+            <option>Software Engineer</option>
+            <option>Senior Backend Developer</option>
+            <option>Senior Frontend Developer</option>
+            <option>Senior Full Stack Developer</option>
+            <option>Cloud Engineer</option>
+            <option>Platform Engineer</option>
+            <option>Site Reliability Engineer</option>
+            <option>API Engineer</option>
+            <option>Data Engineer</option>
+            <option>System Engineer</option>
+            <option>Technical Architect</option>
+          </select>
+        </section>
+
+        <button type="submit"
+          class="w-full py-4 bg-[#fb2c36] text-white font-bold rounded-lg">
+          Submit
+        </button>
+
+      </form>
+    </div>
+  </div>
+</main>
+
+</body>
+</html>
